@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
 
 public class TrainConsistApp {
 
@@ -8,32 +7,37 @@ public class TrainConsistApp {
         // Welcome message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize HashSet for unique bogie IDs
-        Set<String> bogieIDs = new HashSet<>();
+        // Create LinkedList for train consist
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // ---- ADD bogie IDs ----
-        System.out.println("\nAdding bogie IDs...");
+        // ---- ADD bogies ----
+        System.out.println("\nAdding bogies...");
 
-        bogieIDs.add("BG101");
-        bogieIDs.add("BG102");
-        bogieIDs.add("BG103");
-        bogieIDs.add("BG101"); // Duplicate (will be ignored)
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC Chair");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // ---- DISPLAY unique bogie IDs ----
-        System.out.println("\nUnique Bogie IDs in Train:");
-
-        for (String id : bogieIDs) {
-            System.out.println(id);
+        // Display initial consist
+        System.out.println("\nInitial Train Consist:");
+        for (String bogie : trainConsist) {
+            System.out.println(bogie);
         }
 
-        // ---- CHECK duplicate behavior ----
-        System.out.println("\nChecking if 'BG101' exists...");
-        if (bogieIDs.contains("BG101")) {
-            System.out.println("BG101 is present in the train.");
-        } else {
-            System.out.println("BG101 is NOT present.");
-        }
+        // ---- INSERT Pantry Car at position 2 ----
+        System.out.println("\nInserting 'Pantry Car' at position 2...");
+        trainConsist.add(2, "Pantry Car");
 
-        // Program continues...
+        // ---- REMOVE first and last bogie ----
+        System.out.println("\nRemoving first and last bogies...");
+        trainConsist.removeFirst();  // removes Engine
+        trainConsist.removeLast();   // removes Guard
+
+        // ---- FINAL DISPLAY ----
+        System.out.println("\nFinal Ordered Train Consist:");
+        for (String bogie : trainConsist) {
+            System.out.println(bogie);
+        }
     }
 }
