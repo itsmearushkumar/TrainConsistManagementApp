@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrainConsistApp {
 
@@ -8,38 +8,30 @@ public class TrainConsistApp {
         // Welcome message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize train consist (ArrayList)
-        List<String> trainConsist = new ArrayList<>();
+        // Initialize HashSet for unique bogie IDs
+        Set<String> bogieIDs = new HashSet<>();
 
-        // ---- ADD passenger bogies ----
-        System.out.println("\nAdding passenger bogies...");
+        // ---- ADD bogie IDs ----
+        System.out.println("\nAdding bogie IDs...");
 
-        trainConsist.add("Sleeper Bogie");
-        trainConsist.add("AC Chair Bogie");
-        trainConsist.add("First Class Bogie");
+        bogieIDs.add("BG101");
+        bogieIDs.add("BG102");
+        bogieIDs.add("BG103");
+        bogieIDs.add("BG101"); // Duplicate (will be ignored)
 
-        // ---- DISPLAY bogies ----
-        System.out.println("\nCurrent Train Consist:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
+        // ---- DISPLAY unique bogie IDs ----
+        System.out.println("\nUnique Bogie IDs in Train:");
+
+        for (String id : bogieIDs) {
+            System.out.println(id);
         }
 
-        // ---- REMOVE a bogie ----
-        System.out.println("\nRemoving 'AC Chair Bogie'...");
-        trainConsist.remove("AC Chair Bogie");
-
-        // Display after removal
-        System.out.println("\nTrain Consist after removal:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
-        }
-
-        // ---- CHECK existence ----
-        System.out.println("\nChecking if 'Sleeper Bogie' exists...");
-        if (trainConsist.contains("Sleeper Bogie")) {
-            System.out.println("Sleeper Bogie is present in the train.");
+        // ---- CHECK duplicate behavior ----
+        System.out.println("\nChecking if 'BG101' exists...");
+        if (bogieIDs.contains("BG101")) {
+            System.out.println("BG101 is present in the train.");
         } else {
-            System.out.println("Sleeper Bogie is NOT present in the train.");
+            System.out.println("BG101 is NOT present.");
         }
 
         // Program continues...
