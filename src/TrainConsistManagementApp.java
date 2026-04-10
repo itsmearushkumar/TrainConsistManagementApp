@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
 public class TrainConsistApp {
 
@@ -7,36 +7,25 @@ public class TrainConsistApp {
         // Welcome message
         System.out.println("=== Train Consist Management App ===");
 
-        // Create LinkedList for train consist
-        LinkedList<String> trainConsist = new LinkedList<>();
+        // Create LinkedHashSet for train formation
+        LinkedHashSet<String> trainFormation = new LinkedHashSet<>();
 
         // ---- ADD bogies ----
-        System.out.println("\nAdding bogies...");
+        System.out.println("\nAttaching bogies...");
 
-        trainConsist.add("Engine");
-        trainConsist.add("Sleeper");
-        trainConsist.add("AC Chair");
-        trainConsist.add("Cargo");
-        trainConsist.add("Guard");
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
 
-        // Display initial consist
-        System.out.println("\nInitial Train Consist:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
-        }
+        // Attempt to add duplicate
+        System.out.println("\nAttempting to add duplicate bogie 'Sleeper'...");
+        trainFormation.add("Sleeper"); // Duplicate (ignored)
 
-        // ---- INSERT Pantry Car at position 2 ----
-        System.out.println("\nInserting 'Pantry Car' at position 2...");
-        trainConsist.add(2, "Pantry Car");
+        // ---- DISPLAY final formation ----
+        System.out.println("\nFinal Train Formation (Insertion Order Preserved):");
 
-        // ---- REMOVE first and last bogie ----
-        System.out.println("\nRemoving first and last bogies...");
-        trainConsist.removeFirst();  // removes Engine
-        trainConsist.removeLast();   // removes Guard
-
-        // ---- FINAL DISPLAY ----
-        System.out.println("\nFinal Ordered Train Consist:");
-        for (String bogie : trainConsist) {
+        for (String bogie : trainFormation) {
             System.out.println(bogie);
         }
     }
